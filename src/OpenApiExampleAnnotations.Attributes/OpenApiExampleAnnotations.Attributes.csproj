@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <RootNamespace>RealGoodApps.OpenApiExampleAnnotations.Attributes</RootNamespace>
+        <Version>$(OpenApiExampleAnnotationsVersion)</Version>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <PackageId>OpenApiExampleAnnotations.Attributes</PackageId>
+        <PackageVersion>$(OpenApiExampleAnnotationsVersion)</PackageVersion>
+        <Authors>RealGoodApps, LLC</Authors>
+        <PackageLicenseUrl>https://raw.githubusercontent.com/RealGoodAppsLLC/OpenApiExampleAnnotations/main/LICENSE</PackageLicenseUrl>
+        <PackageProjectUrl>https://github.com/RealGoodAppsLLC/OpenApiExampleAnnotations</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/RealGoodAppsLLC/OpenApiExampleAnnotations</RepositoryUrl>
+        <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+        <Description>OpenApiExampleAnnotations.Attributes</Description>
+        <PackageReleaseNotes>See the following: https://raw.githubusercontent.com/RealGoodAppsLLC/OpenApiExampleAnnotations/main/CHANGELOG.md</PackageReleaseNotes>
+        <Copyright>Copyright 2022 RealGoodApps, LLC</Copyright>
+        <PackageTags>Azure Functions, openapi example annotations, swagger UI</PackageTags>
+    </PropertyGroup>
+    
+</Project>
