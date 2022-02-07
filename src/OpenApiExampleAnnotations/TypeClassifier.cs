@@ -351,7 +351,7 @@ namespace RealGoodApps.OpenApiExampleAnnotations
                     true);
             }
 
-            var genericEnumerableInterface = forType.GetInterfaces()
+            var genericEnumerableInterface = forType.GetInterfaces().Append(forType)
                 .FirstOrDefault(i => i.Namespace == "System.Collections.Generic"
                                      && i.Name == "IEnumerable`1"
                                      && i.GenericTypeArguments.Length == 1);

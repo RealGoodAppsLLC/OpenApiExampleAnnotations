@@ -4,6 +4,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
+using System.Linq;
 using System.Reflection;
 using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Abstractions;
 using Microsoft.Azure.WebJobs.Extensions.OpenApi.Core.Resolvers;
@@ -20,7 +22,8 @@ namespace RealGoodApps.OpenApiExampleAnnotations
             var example = CreateExample(
                 typeof(TResponse),
                 null,
-                null);
+                null,
+                ImmutableList.Create<TypeClassifier.TypeClassification>());
 
             this.Examples.Add(OpenApiExampleResolver.Resolve(
                 "default",
@@ -51,9 +54,24 @@ namespace RealGoodApps.OpenApiExampleAnnotations
         private static object CreateExample(
             Type forType,
             object exampleKey,
-            object exampleValue)
+            object exampleValue,
+            ImmutableList<TypeClassifier.TypeClassification> parentTypeClassifications)
         {
             var typeClassification = TypeClassifier.CheckTypeClassification(forType);
+
+            // Guard against circular references
+            var isStructOrClass = typeClassification.Enum == TypeClassifier.TypeClassificationEnum.Class
+                                  || typeClassification.Enum == TypeClassifier.TypeClassificationEnum.Struct;
+
+            if (isStructOrClass && parentTypeClassifications.Any(parent =>
+                    (parent.Enum == TypeClassifier.TypeClassificationEnum.Class
+                     || parent.Enum == TypeClassifier.TypeClassificationEnum.Struct)
+                    && parent.RawType == typeClassification.RawType))
+            {
+                return null;
+            }
+
+            var nextParentTypeClassifications = parentTypeClassifications.Add(typeClassification);
 
             switch (typeClassification.Enum)
             {
@@ -65,7 +83,7 @@ namespace RealGoodApps.OpenApiExampleAnnotations
                         throw new InvalidOperationException("List item type is undefined.");
                     }
 
-                    return new List<object> { CreateExample(listItemType, null, exampleValue) };
+                    return new List<object> { CreateExample(listItemType, null, exampleValue, nextParentTypeClassifications) };
                 case TypeClassifier.TypeClassificationEnum.Dictionary:
                     var keyType = typeClassification.KeyType?.RawType;
                     var valueType = typeClassification.ValueType?.RawType;
@@ -75,8 +93,8 @@ namespace RealGoodApps.OpenApiExampleAnnotations
                         throw new InvalidOperationException("Key or value type is undefined.");
                     }
 
-                    var generatedExampleKey = CreateExample(keyType, null, exampleKey);
-                    var generatedExampleValue = CreateExample(valueType, null, exampleValue);
+                    var generatedExampleKey = CreateExample(keyType, null, exampleKey, nextParentTypeClassifications);
+                    var generatedExampleValue = CreateExample(valueType, null, exampleValue, nextParentTypeClassifications);
 
                     if (generatedExampleKey == null)
                     {
@@ -135,7 +153,8 @@ namespace RealGoodApps.OpenApiExampleAnnotations
                         generated[publicProperty.Name] = CreateExample(
                             publicProperty.PropertyType,
                             exampleAttribute?.Key,
-                            exampleAttribute?.Value);
+                            exampleAttribute?.Value,
+                            nextParentTypeClassifications);
                     }
 
                     return generated;

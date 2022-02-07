@@ -6,6 +6,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenApiExampleAnnotations.A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenApiExampleAnnotations", "src\OpenApiExampleAnnotations\OpenApiExampleAnnotations.csproj", "{917CACA0-A6F0-41D1-906C-CE562DBB61CA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{FECCBC00-36D8-44B3-A432-17B1A1DE7240}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenApiExampleAnnotations.TestModels", "test\OpenApiExampleAnnotations.TestModels\OpenApiExampleAnnotations.TestModels.csproj", "{816E3756-A242-424C-9CA2-992FF77D478F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenApiExampleAnnotations.TestFunctions", "test\OpenApiExampleAnnotations.TestFunctions\OpenApiExampleAnnotations.TestFunctions.csproj", "{A0E75485-85F1-4635-931D-EA6F200D6819}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,6 +20,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{51554240-4635-4487-A752-753D0D05A9B4} = {57938637-7791-4148-B89F-DC313AD0FE59}
 		{917CACA0-A6F0-41D1-906C-CE562DBB61CA} = {57938637-7791-4148-B89F-DC313AD0FE59}
+		{816E3756-A242-424C-9CA2-992FF77D478F} = {FECCBC00-36D8-44B3-A432-17B1A1DE7240}
+		{A0E75485-85F1-4635-931D-EA6F200D6819} = {FECCBC00-36D8-44B3-A432-17B1A1DE7240}
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{51554240-4635-4487-A752-753D0D05A9B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -24,5 +32,13 @@ Global
 		{917CACA0-A6F0-41D1-906C-CE562DBB61CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{917CACA0-A6F0-41D1-906C-CE562DBB61CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{917CACA0-A6F0-41D1-906C-CE562DBB61CA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{816E3756-A242-424C-9CA2-992FF77D478F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{816E3756-A242-424C-9CA2-992FF77D478F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{816E3756-A242-424C-9CA2-992FF77D478F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{816E3756-A242-424C-9CA2-992FF77D478F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0E75485-85F1-4635-931D-EA6F200D6819}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0E75485-85F1-4635-931D-EA6F200D6819}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0E75485-85F1-4635-931D-EA6F200D6819}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0E75485-85F1-4635-931D-EA6F200D6819}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
