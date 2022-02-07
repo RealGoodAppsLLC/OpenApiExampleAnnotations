@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <AzureFunctionsVersion>V4</AzureFunctionsVersion>
+        <RootNamespace>OpenApiExampleAnnotations.TestFunctions</RootNamespace>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.NET.Sdk.Functions" Version="[4.0.1]" />
+        <PackageReference Include="Microsoft.Azure.Functions.Extensions" Version="[1.1.0]" />
+        <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.OpenApi" Version="[1.0.0]" />
+        <PackageReference Include="Microsoft.Azure.WebJobs.Extensions.Storage" Version="[5.0.0]" />
+        <PackageReference Include="Microsoft.Extensions.Hosting" Version="[6.0.0]" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="../OpenApiExampleAnnotations.TestModels/OpenApiExampleAnnotations.TestModels.csproj" />
+        <ProjectReference Include="../../src/OpenApiExampleAnnotations/OpenApiExampleAnnotations.csproj" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Update="host.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+        <None Update="local.settings.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+            <CopyToPublishDirectory>Never</CopyToPublishDirectory>
+        </None>
+    </ItemGroup>
+</Project>
