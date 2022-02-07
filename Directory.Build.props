@@ -1,5 +1,5 @@
 <Project>
     <PropertyGroup>
-        <OpenApiExampleAnnotationsVersion>0.1.0</OpenApiExampleAnnotationsVersion>
+        <OpenApiExampleAnnotationsVersion>0.2.0</OpenApiExampleAnnotationsVersion>
     </PropertyGroup>
 </Project>
